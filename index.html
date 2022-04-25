@@ -10,12 +10,12 @@
   <body>
     <div class="main">
       <div class="content">
-        <div class="start-game" id="startGame">
+        <div class="start-game show" id="startGame">
           <h1>Questions And Answers</h1>
           <button class="button default" id="startGameButton"><span>Start Game</span></button>
         </div>
         <!-- Quiz Box -->
-        <div class="quiz-box show" id="quizBox">
+        <div class="quiz-box" id="quizBox">
           <div class="header">
             <div class="points">Points: <span>0</span></div>
             <div class="timer">
@@ -26,17 +26,18 @@
           </div>
 
           <section class="section-questions">
-            <div class="que-text" id="questionText">Question</div>
+            <div class="que-text" id="questionText">
+              <!-- Here I'Ve Inserted Question From JavaScript -->
+            </div>
             <div class="option-list" id="optionList">
-              <div class="option">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, impedit.<span></span></div>
-              <div class="option">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, impedit.<span></span></div>
-              <div class="option">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, impedit.<span></span></div>
-              <div class="option">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, impedit.<span></span></div>
+              <!-- Here I'Ve Inserted Options From JavaScript -->
             </div>
           </section>
 
           <div class="footer-game">
-            <div class="total-que"><span>1 of 5</span></div>
+            <div class="total-que">
+              <!-- Here I'Ve Inserted Question Count Number From JavaScript -->
+            </div>
             <div class="buttons-game">
               <button class="button game-button next-btn"><span>Next Question</span></button>
               <button class="button game-button finish-btn"><span>Finish Game</span></button>
