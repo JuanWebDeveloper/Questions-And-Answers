@@ -17,7 +17,7 @@ body {
 /* Buttons Styles */
 .button {
   align-items: center;
-  background: #1a1a33;
+  background-color: #1a1a33;
   border: none;
   border-radius: 5px;
   color: #aaa6ca;
@@ -51,7 +51,7 @@ body {
 
 /* Default Buttons Styles */
 .default::after {
-  background: none;
+  background-color: none;
   border-radius: 50%;
   border: none;
   content: '';
@@ -67,7 +67,7 @@ body {
 }
 
 .default:hover::after {
-  background: #21213b;
+  background-color: #21213b;
   transform: scale(300);
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .start-game {
-  background: #13142a;
+  background-color: #13142a;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   left: -100%;
   position: absolute;
@@ -113,7 +113,7 @@ body {
 
 /* Quiz Box Styles */
 .quiz-box {
-  background: #13142a;
+  background-color: #13142a;
   border-radius: 5px;
   left: -100%;
   position: absolute;
@@ -147,7 +147,7 @@ body {
 
 .quiz-box .header .timer {
   align-items: center;
-  background: #21213b;
+  background-color: #21213b;
   border: 1px solid #aaa6ca20;
   border-radius: 5px;
   color: #aaa6ca;
@@ -163,7 +163,7 @@ body {
 }
 
 .quiz-box .header .timer .time-sec {
-  background: #1a1a33;
+  background-color: #1a1a33;
   border: 1px solid #1a1a33;
   border-radius: 5px;
   color: #aaa6ca;
@@ -179,10 +179,84 @@ body {
 }
 
 .quiz-box .header .time-line {
-  background: #aaa6ca;
+  background-color: #aaa6ca;
   bottom: 0px;
   height: 3px;
   left: 0px;
   position: absolute;
   transition: all 0.3s ease-in;
+}
+
+.section-questions {
+  padding: 1rem;
+}
+
+.section-questions .que-text {
+  color: #aaa6ca;
+  font-size: 1.563rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
+}
+
+.section-questions .option-list {
+  display: block;
+  padding: 1.5rem 0;
+}
+
+.section-questions .option-list .option {
+  align-items: center;
+  background-color: #1a1a33;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.063rem;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.section-questions .option-list .option:last-child {
+  margin-bottom: 0px;
+}
+
+.section-questions .option-list .option:hover {
+  background-color: #21213b;
+}
+
+.section-questions .option-list .option.correct {
+  background-color: #11fc4880;
+}
+
+.section-questions .option-list .option.incorrect {
+  background-color: #fc1b2d80;
+}
+
+.section-questions .option-list .option.disabled {
+  pointer-events: none;
+}
+
+.section-questions .option-list .option .icon i {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  font-size: 0.813rem;
+  height: 26px;
+  line-height: 24px;
+  pointer-events: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: 26px;
+}
+
+.option-list .option .icon.tick i {
+  background-color: #ffffff;
+  border-color: #23903c;
+  color: #23903c;
+}
+
+.option-list .option .icon.cross i {
+  background-color: #ffffff;
+  border-color: #a42834;
+  color: #a42834;
 }
