@@ -305,8 +305,7 @@ body {
   pointer-events: auto;
 }
 
-.footer-game .buttons-game .game-button::after,
-.footer-game .finish-game_button .game-button::after {
+.game-button::after {
   border-right: 60px solid transparent;
   content: '';
   left: -200%;
@@ -317,29 +316,52 @@ body {
   z-index: 1;
 }
 
-.footer-game .buttons-game .game-button.next-btn::after {
+.game-button.next-btn::after {
   border-bottom: 60px solid #21213b;
 }
 
-.footer-game .buttons-game .game-button.finish-btn::after,
-.footer-game .finish-game_button .game-button.finish-btn::after {
+.game-button.finish-btn::after {
   border-bottom: 60px solid #fc1b2d50;
 }
 
-.footer-game .buttons-game .game-button:hover::after,
-.footer-game .finish-game_button .game-button:hover::after {
+.game-button:hover::after {
   left: 0;
 }
 
-.footer-game .buttons-game .next-btn,
-.footer-game .buttons-game .finish-btn,
-.footer-game .finish-game_button .finish-btn {
+.next-btn,
+.finish-btn {
   font-size: 1.125rem;
   margin-left: 10px;
   padding: 10px 20px;
 }
 
-.footer-game .buttons-game .finish-btn,
-.footer-game .finish-game_button .finish-btn {
+.finish-btn {
   background-color: #fc1b2d80;
+}
+
+/* Alerts Styles */
+.withdrawal-title,
+.alert-success_title {
+  color: #fc1b2d;
+  font-size: 1.563rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px #fc1b2d80, 0 0 10px #fc1b2d80;
+}
+
+.alert-success_title {
+  color: #11fc48;
+  text-shadow: 0 0 10px #11fc4880, 0 0 10px #11fc4880;
+}
+
+.withdrawal-text,
+.alert-success_text {
+  color: #aaa6ca;
+  font-size: 1.063rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
+}
+
+.alert-success_text span {
+  color: #11fc48;
+  text-shadow: 0 0 10px #11fc4880, 0 0 10px #11fc4880;
 }
