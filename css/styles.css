@@ -339,6 +339,11 @@ body {
   background-color: #fc1b2d80;
 }
 
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Alerts Styles */
 .withdrawal-title,
 .alert-success_title {
@@ -348,7 +353,14 @@ body {
   text-shadow: 0 0 10px #fc1b2d80, 0 0 10px #fc1b2d80;
 }
 
-.alert-success_title {
+.alert-win_title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.alert-success_title,
+.alert-win_title {
   color: #11fc48;
   text-shadow: 0 0 10px #11fc4880, 0 0 10px #11fc4880;
 }

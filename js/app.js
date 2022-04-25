@@ -12,7 +12,7 @@ const finishGame = document.getElementById('finishGame');
 // Default Game Values
 let gameRound = 1;
 let roundData = {};
-let points = parseInt(localStorage.getItem('points')) || 0;
+let points = 0;
 
 // Events Listeners
 startGameButton.addEventListener('click', () => {
@@ -27,15 +27,42 @@ startGameButton.addEventListener('click', () => {
 // Event To Show The Next Question
 nextQuestion.addEventListener('click', () => {
   gameRound++;
+  points = parseInt(localStorage.getItem('points'));
   gameButtons.classList.remove('show');
   if (gameRound <= 5) {
-    points = parseInt(localStorage.getItem('points'));
     roundData = selectQuestion(gameRound);
     showQuestion(roundData, points);
     showTime(roundData);
     showFooter(gameRound);
   } else {
-    console.log(points);
+    // Win Game Alert
+    const winGameAlert = Swal.mixin({
+      customClass: {
+        confirmButton: 'button game-button next-btn',
+      },
+      buttonsStyling: false,
+    });
+
+    winGameAlert
+      .fire({
+        title: '<span class="alert-win_title">!Felicidades!</span>',
+        html: `<span class="alert-success_text">Has completado el juego con <span>${points}</span> puntos</span>`,
+        icon: 'success',
+        allowOutsideClick: false,
+        background: '#0c0c22',
+        confirmButtonText: '<span>Entendido, Gracias</span>',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          gameRound = 1;
+          roundData = {};
+          localStorage.setItem('points', 0);
+          quizBox.classList.remove('show');
+          gameButtons.classList.remove('show');
+          finishGame.classList.remove('hide');
+          startGame.classList.add('show');
+        }
+      });
   }
 });
 
@@ -57,30 +84,41 @@ finishGame.addEventListener('click', () => {
       background: '#0c0c22',
       width: 600,
       showCancelButton: true,
+      allowOutsideClick: false,
       confirmButtonText: '<span>Si, Estoy Seguro</span>',
       cancelButtonText: 'No, Cancelar',
       reverseButtons: true,
     })
     .then((result) => {
       if (result.isConfirmed) {
-        withdrawalAlert.fire({
-          title: '<span class="alert-success_title">Te retiraste del juego</span>',
-          html: `<span class="alert-success_text">Has terminado el juego con <span>${points}</span> puntos</span>`,
-          icon: 'success',
-          background: '#0c0c22',
-          confirmButtonText: '<span>Entendido, Gracias</span>',
-        });
+        points = parseInt(localStorage.getItem('points'));
 
-        gameRound = 1;
-        roundData = {};
-        localStorage.setItem('points', 0);
-        quizBox.classList.remove('show');
-        startGame.classList.add('show');
+        withdrawalAlert
+          .fire({
+            title: '<span class="alert-success_title">Te retiraste del juego</span>',
+            html: `<span class="alert-success_text">Has terminado el juego con <span>${points}</span> puntos</span>`,
+            icon: 'success',
+            allowOutsideClick: false,
+            background: '#0c0c22',
+            confirmButtonText: '<span>Entendido, Gracias</span>',
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              gameRound = 1;
+              roundData = {};
+              points = 0;
+              localStorage.setItem('points', 0);
+              quizBox.classList.remove('show');
+              gameButtons.classList.remove('show');
+              startGame.classList.add('show');
+            }
+          });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         withdrawalAlert.fire({
           title: '<span class="withdrawal-title">Se canceló el retiro del juego</span>',
           html: "<span class='withdrawal-text'>Puedes seguir jugando :)</span>",
           icon: 'error',
+          allowOutsideClick: false,
           background: '#0c0c22',
           confirmButtonText: '<span>Entendido, Gracias</span>',
         });

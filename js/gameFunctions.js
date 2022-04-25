@@ -77,6 +77,7 @@ export const showQuestion = (roundData, points) => {
 export const showFooter = (gameRound) => {
   let totalQue = document.querySelector('#quizBox .footer-game .total-que');
   totalQue.innerHTML = `<span>${gameRound} De ${5}</span>`;
+  gameRound === 5 && document.getElementById('finishGame').classList.add('hide');
 };
 
 // Shows The Time Remaining To Answer The Question
