@@ -15,7 +15,7 @@ let points = 0;
 startGameButton.addEventListener('click', () => {
   startGame.classList.remove('show');
   quizBox.classList.add('show');
-  roundData = selectQuestion(gameRound);
+  roundData = selectQuestion(gameRound, points);
+  showQuestion(roundData);
   showTime(roundData);
-  showQuestion(roundData, points);
 });
