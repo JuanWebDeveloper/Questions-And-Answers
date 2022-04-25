@@ -23,7 +23,7 @@ body {
   color: #aaa6ca;
   cursor: pointer;
   display: inline-flex;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
   justify-content: center;
   overflow: hidden;
@@ -92,9 +92,15 @@ body {
 .start-game {
   background: #13142a;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  left: -100%;
+  position: absolute;
   padding: 1rem;
   text-align: center;
   transition: all 0.3s ease-in;
+}
+
+.start-game.show {
+  left: auto;
 }
 
 .start-game h1 {
@@ -103,4 +109,80 @@ body {
   font-weight: 700;
   margin-top: 0;
   text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
+}
+
+/* Quiz Box Styles */
+.quiz-box {
+  background: #13142a;
+  border-radius: 5px;
+  left: -100%;
+  position: absolute;
+  transition: all 0.3s ease;
+  min-width: 50vw;
+  max-width: 90vw;
+}
+
+.quiz-box.show {
+  left: auto;
+}
+
+.quiz-box .header {
+  align-items: center;
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+  color: #aaa6ca;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 1rem;
+  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
+  z-index: 2;
+}
+
+.quiz-box .header .level {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.quiz-box .header .timer {
+  align-items: center;
+  background: #21213b;
+  border: 1px solid #aaa6ca20;
+  border-radius: 5px;
+  color: #aaa6ca;
+  display: flex;
+  height: 45px;
+  padding: 0 1rem;
+}
+
+.quiz-box .header .timer .time-left_text {
+  font-size: 1.063rem;
+  font-weight: 400;
+  user-select: none;
+}
+
+.quiz-box .header .timer .time-sec {
+  background: #1a1a33;
+  border: 1px solid #1a1a33;
+  border-radius: 5px;
+  color: #aaa6ca;
+  font-size: 1.125rem;
+  font-weight: 500;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 10px;
+  padding: 0 0.5rem;
+  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
+  text-align: center;
+  user-select: none;
+}
+
+.quiz-box .header .time-line {
+  background: #aaa6ca;
+  bottom: 0px;
+  height: 3px;
+  left: 0px;
+  position: absolute;
+  transition: all 0.3s ease-in;
 }
