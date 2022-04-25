@@ -346,14 +346,17 @@ body {
 
 /* Alerts Styles */
 .withdrawal-title,
-.alert-success_title {
+.alert-success_title,
+.alert-end_game-title {
   color: #fc1b2d;
   font-size: 1.563rem;
   font-weight: 600;
   text-shadow: 0 0 10px #fc1b2d80, 0 0 10px #fc1b2d80;
+  text-transform: capitalize;
 }
 
-.alert-win_title {
+.alert-win_title,
+.alert-end_game-title {
   font-size: 1.875rem;
   font-weight: 700;
   letter-spacing: 1px;

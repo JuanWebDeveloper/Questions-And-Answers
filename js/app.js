@@ -8,6 +8,8 @@ const quizBox = document.getElementById('quizBox');
 const gameButtons = document.querySelector('#quizBox .buttons-game');
 const nextQuestion = document.getElementById('nextQuestion');
 const finishGame = document.getElementById('finishGame');
+const finishGameButton = document.querySelector('#quizBox .finish-game_button');
+const endOfTheGame = document.getElementById('endOfTheGame');
 
 // Default Game Values
 let gameRound = 1;
@@ -56,6 +58,7 @@ nextQuestion.addEventListener('click', () => {
         if (result.isConfirmed) {
           gameRound = 1;
           roundData = {};
+          points = 0;
           localStorage.setItem('points', 0);
           quizBox.classList.remove('show');
           gameButtons.classList.remove('show');
@@ -122,6 +125,38 @@ finishGame.addEventListener('click', () => {
           background: '#0c0c22',
           confirmButtonText: '<span>Entendido, Gracias</span>',
         });
+      }
+    });
+});
+
+// End Game Event
+endOfTheGame.addEventListener('click', () => {
+  const endGameAlert = Swal.mixin({
+    customClass: {
+      confirmButton: 'button game-button next-btn',
+    },
+    buttonsStyling: false,
+  });
+
+  endGameAlert
+    .fire({
+      title: '<span class="alert-end_game-title">¡Fin del juego!</span>',
+      html: "<span class='withdrawal-text'>¡Perdiste todos tus puntos al responder mal!</span>",
+      icon: 'error',
+      background: '#0c0c22',
+      allowOutsideClick: false,
+      confirmButtonText: '<span>Entendido, Gracias</span>',
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        gameRound = 1;
+        roundData = {};
+        points = 0;
+        localStorage.setItem('points', 0);
+        quizBox.classList.remove('show');
+        finishGame.classList.contains('hide') && finishGame.classList.remove('hide');
+        finishGameButton.classList.remove('show');
+        startGame.classList.add('show');
       }
     });
 });
