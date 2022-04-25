@@ -17,23 +17,22 @@ let points = 0;
 startGameButton.addEventListener('click', () => {
   startGame.classList.remove('show');
   quizBox.classList.add('show');
-  roundData = selectQuestion(gameRound, points);
-  showQuestion(roundData);
+  roundData = selectQuestion(gameRound);
+  showQuestion(roundData, points);
   showTime(roundData);
   showFooter(gameRound);
 });
 
 nextQuestion.addEventListener('click', () => {
   gameRound++;
-  points = roundData.points;
   gameButtons.classList.remove('show');
   if (gameRound <= 5) {
-    roundData = selectQuestion(gameRound, points);
-    showQuestion(roundData);
+    points = parseInt(localStorage.getItem('points'));
+    roundData = selectQuestion(gameRound);
+    showQuestion(roundData, points);
     showTime(roundData);
     showFooter(gameRound);
   } else {
-    points += 1000;
     console.log(points);
   }
 });

@@ -117,7 +117,7 @@ export const fourthRoundQuestions = [
 
 export const fifthRoundQuestions = [
   {
-    question: 'CUantos vertices tiene un cubo¿?',
+    question: '¿Cuantos vertices tiene un cubo?',
     options: ['12', '8', '10', '6'],
     answer: '8',
   },

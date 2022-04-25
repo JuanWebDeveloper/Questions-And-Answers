@@ -5,47 +5,49 @@ import { firstRoundQuestions, secondRoundQuestions, thirdRoundQuestions, fourthR
 let counter, counterLine;
 
 // Function To Select The Question
-export const selectQuestion = (gameRound, points) => {
+export const selectQuestion = (gameRound) => {
   let questionToShow = Math.floor(Math.random() * (5 - 0)) + 0;
   let questionOfTheRound = {};
   let questionTime = 0;
+  let pointsForRound = 0;
 
   switch (gameRound) {
     case 1:
       questionOfTheRound = firstRoundQuestions[questionToShow];
       questionTime = 30;
+      pointsForRound = 100;
       break;
     case 2:
       questionOfTheRound = secondRoundQuestions[questionToShow];
       questionTime = 40;
-      points += 100;
+      pointsForRound = 200;
       break;
     case 3:
       questionOfTheRound = thirdRoundQuestions[questionToShow];
       questionTime = 50;
-      points += 200;
+      pointsForRound = 300;
       break;
     case 4:
       questionOfTheRound = fourthRoundQuestions[questionToShow];
       questionTime = 60;
-      points += 300;
+      pointsForRound = 400;
       break;
     case 5:
       questionOfTheRound = fifthRoundQuestions[questionToShow];
       questionTime = 70;
-      points += 400;
+      pointsForRound = 1000;
       break;
     default:
       questionOfTheRound = {};
       break;
   }
 
-  return { questionOfTheRound, questionTime, points };
+  return { questionOfTheRound, questionTime, pointsForRound };
 };
 
 // Function To Show The Question
-export const showQuestion = (roundData) => {
-  let { questionOfTheRound, points } = roundData;
+export const showQuestion = (roundData, points) => {
+  let { questionOfTheRound } = roundData;
   let elementOfPoints = document.querySelector('#quizBox .points span');
   let question = document.getElementById('questionText');
   let optionList = document.getElementById('optionList');
@@ -68,7 +70,7 @@ export const showQuestion = (roundData) => {
   // Detect User Selected Option
   let allOptions = optionList.querySelectorAll('.option');
 
-  allOptions.forEach((option) => option.addEventListener('click', () => validateOption(option, questionOfTheRound)));
+  allOptions.forEach((option) => option.addEventListener('click', () => validateOption(option, roundData, points)));
 };
 
 // Function to show the footer
@@ -132,13 +134,15 @@ const startTimerLine = (questionTime) => {
 };
 
 // Validate That The Option Selected Is Correct
-const validateOption = (option, questionOfTheRound) => {
+const validateOption = (option, roundData, points) => {
   clearInterval(counter);
   clearInterval(counterLine);
+  let { questionOfTheRound, pointsForRound } = roundData;
   let userAnswer = option.querySelector('.opText').textContent;
   let correctAnswer = questionOfTheRound.answer;
   let gameButtons = document.querySelector('#quizBox .buttons-game');
   let endOfTheGame = document.querySelector('#quizBox .finish-game_button');
+  let elementOfPoints = document.querySelector('#quizBox .points span');
 
   // Icons
   const correctIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
@@ -147,6 +151,8 @@ const validateOption = (option, questionOfTheRound) => {
   if (userAnswer === correctAnswer) {
     option.classList.add('correct');
     option.insertAdjacentHTML('beforeend', correctIcon);
+    elementOfPoints.innerHTML = points + pointsForRound;
+    localStorage.setItem('points', points + pointsForRound);
     gameButtons.classList.add('show');
   } else {
     option.classList.add('incorrect');
