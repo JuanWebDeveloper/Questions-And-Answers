@@ -71,6 +71,12 @@ export const showQuestion = (roundData) => {
   allOptions.forEach((option) => option.addEventListener('click', () => validateOption(option, questionOfTheRound)));
 };
 
+// Function to show the footer
+export const showFooter = (gameRound) => {
+  let totalQue = document.querySelector('#quizBox .footer-game .total-que');
+  totalQue.innerHTML = `<span>${gameRound} Of ${5}</span>`;
+};
+
 // Shows The Time Remaining To Answer The Question
 export const showTime = (roundData) => {
   let { questionOfTheRound, questionTime } = roundData;
