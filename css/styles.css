@@ -219,6 +219,12 @@ body {
   transition: all 0.3s ease;
 }
 
+.option .op {
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px #ffffff80, 0 0 10px #ffffff80;
+}
+
 .section-questions .option-list .option:last-child {
   margin-bottom: 0px;
 }

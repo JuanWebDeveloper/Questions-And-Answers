@@ -1,5 +1,5 @@
 // Import Of The Functions
-import { selectQuestion, showQuestion } from './gameFunctions.js';
+import { selectQuestion, showQuestion, showTime } from './gameFunctions.js';
 
 // Elements HTML:
 const startGame = document.getElementById('startGame');
@@ -8,13 +8,14 @@ const quizBox = document.getElementById('quizBox');
 
 // Default Game Values
 let gameRound = 1;
-let questionOfTheRound = {};
+let roundData = {};
 let points = 0;
 
 // Events Listeners
 startGameButton.addEventListener('click', () => {
   startGame.classList.remove('show');
   quizBox.classList.add('show');
-  questionOfTheRound = selectQuestion(gameRound);
-  showQuestion(questionOfTheRound, points);
+  roundData = selectQuestion(gameRound);
+  showTime(roundData);
+  showQuestion(roundData, points);
 });
