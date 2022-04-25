@@ -76,7 +76,7 @@ export const showQuestion = (roundData, points) => {
 // Function to show the footer
 export const showFooter = (gameRound) => {
   let totalQue = document.querySelector('#quizBox .footer-game .total-que');
-  totalQue.innerHTML = `<span>${gameRound} Of ${5}</span>`;
+  totalQue.innerHTML = `<span>${gameRound} De ${5}</span>`;
 };
 
 // Shows The Time Remaining To Answer The Question

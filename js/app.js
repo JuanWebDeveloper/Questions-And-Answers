@@ -51,23 +51,24 @@ finishGame.addEventListener('click', () => {
 
   withdrawalAlert
     .fire({
-      title: '<span class="withdrawal-title">Are you sure?</span>',
-      html: "<span class='withdrawal-text'>You won't be able to revert this!</span>",
+      title: '<span class="withdrawal-title">¿Estas seguro de que quieres retirarte?</span>',
+      html: "<span class='withdrawal-text'>¡Si te retiras perderás tu avance!</span>",
       icon: 'warning',
       background: '#0c0c22',
+      width: 600,
       showCancelButton: true,
-      confirmButtonText: '<span>Yes, I am sure!</span>',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: '<span>Si, Estoy Seguro</span>',
+      cancelButtonText: 'No, Cancelar',
       reverseButtons: true,
     })
     .then((result) => {
       if (result.isConfirmed) {
         withdrawalAlert.fire({
-          title: '<span class="alert-success_title">You Retired From The Game</span>',
-          html: `<span class="alert-success_text">You have finished the game with <span>${points}</span> points</span>`,
+          title: '<span class="alert-success_title">Te retiraste del juego</span>',
+          html: `<span class="alert-success_text">Has terminado el juego con <span>${points}</span> puntos</span>`,
           icon: 'success',
-          background: '#13142a99',
-          confirmButtonText: '<span>Understood thanks!</span>',
+          background: '#0c0c22',
+          confirmButtonText: '<span>Entendido, Gracias</span>',
         });
 
         gameRound = 1;
@@ -77,11 +78,11 @@ finishGame.addEventListener('click', () => {
         startGame.classList.add('show');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         withdrawalAlert.fire({
-          title: '<span class="withdrawal-title">Cancelled</span>',
-          html: "<span class='withdrawal-text'>You can continue playing :)</span>",
+          title: '<span class="withdrawal-title">Se canceló el retiro del juego</span>',
+          html: "<span class='withdrawal-text'>Puedes seguir jugando :)</span>",
           icon: 'error',
-          background: '#13142a99',
-          confirmButtonText: '<span>Understood thanks!</span>',
+          background: '#0c0c22',
+          confirmButtonText: '<span>Entendido, Gracias</span>',
         });
       }
     });
