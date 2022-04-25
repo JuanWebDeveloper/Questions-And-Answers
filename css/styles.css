@@ -135,14 +135,16 @@ body {
   justify-content: space-between;
   position: relative;
   padding: 0 1rem;
-  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
   z-index: 2;
 }
 
-.quiz-box .header .level {
+.quiz-box .header .points {
   font-size: 2rem;
   font-weight: 600;
-  text-transform: capitalize;
+}
+
+.points span {
+  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
 }
 
 .quiz-box .header .timer {
@@ -259,4 +261,79 @@ body {
   background-color: #ffffff;
   border-color: #a42834;
   color: #a42834;
+}
+
+.footer-game {
+  align-items: center;
+  background: #13142a;
+  border-top: 1px solid #aaa6ca;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.footer-game .total-que span {
+  display: flex;
+  color: #aaa6ca;
+  font-size: 1.25rem;
+  text-shadow: 0 0 10px #aaa6ca80, 0 0 10px #aaa6ca80;
+  user-select: none;
+}
+
+.footer-game .buttons-game,
+.footer-game .finish-game_button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.footer-game .finish-game_button {
+  right: 0;
+  position: absolute;
+  padding-right: 1rem;
+}
+
+.footer-game .buttons-game.show,
+.footer-game .finish-game_button.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.footer-game .buttons-game .game-button::after,
+.footer-game .finish-game_button .game-button::after {
+  border-right: 60px solid transparent;
+  content: '';
+  left: -200%;
+  position: absolute;
+  top: 0;
+  transition: 0.5s ease-in-out all;
+  width: 150%;
+  z-index: 1;
+}
+
+.footer-game .buttons-game .game-button.next-btn::after {
+  border-bottom: 60px solid #21213b;
+}
+
+.footer-game .buttons-game .game-button.finish-btn::after,
+.footer-game .finish-game_button .game-button.finish-btn::after {
+  border-bottom: 60px solid #fc1b2d50;
+}
+
+.footer-game .buttons-game .game-button:hover::after,
+.footer-game .finish-game_button .game-button:hover::after {
+  left: 0;
+}
+
+.footer-game .buttons-game .next-btn,
+.footer-game .buttons-game .finish-btn,
+.footer-game .finish-game_button .finish-btn {
+  font-size: 1.125rem;
+  margin-left: 10px;
+  padding: 10px 20px;
+}
+
+.footer-game .buttons-game .finish-btn,
+.footer-game .finish-game_button .finish-btn {
+  background-color: #fc1b2d80;
 }
