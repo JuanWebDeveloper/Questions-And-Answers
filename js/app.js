@@ -19,7 +19,10 @@ let points = 0;
 // Events Listeners
 startGameButton.addEventListener('click', () => {
   startGame.classList.remove('show');
+  startGame.classList.add('animate__backOutUp');
   quizBox.classList.add('show');
+  quizBox.classList.contains('animate__backOutUp') && quizBox.classList.remove('animate__backOutUp');
+  quizBox.classList.add('animate__backInDown');
   roundData = selectQuestion(gameRound);
   showQuestion(roundData, points);
   showTime(roundData);
@@ -42,6 +45,12 @@ nextQuestion.addEventListener('click', () => {
       customClass: {
         confirmButton: 'button game-button next-btn',
       },
+      showClass: {
+        popup: 'animate__animated animate__backInDown',
+      },
+      hideClass: {
+        popup: 'animate__animated animate__backOutUp',
+      },
       buttonsStyling: false,
     });
 
@@ -61,9 +70,13 @@ nextQuestion.addEventListener('click', () => {
           points = 0;
           localStorage.setItem('points', 0);
           quizBox.classList.remove('show');
+          quizBox.classList.remove('animate__backInDown');
+          quizBox.classList.add('animate__backOutUp');
+          startGame.classList.remove('animate__backOutUp');
+          startGame.classList.add('show');
+          startGame.classList.add('animate__backInDown');
           gameButtons.classList.remove('show');
           finishGame.classList.remove('hide');
-          startGame.classList.add('show');
         }
       });
   }
@@ -75,6 +88,12 @@ finishGame.addEventListener('click', () => {
     customClass: {
       confirmButton: 'button game-button next-btn',
       cancelButton: 'button game-button finish-btn',
+    },
+    showClass: {
+      popup: 'animate__animated animate__backInDown',
+    },
+    hideClass: {
+      popup: 'animate__animated animate__backOutUp',
     },
     buttonsStyling: false,
   });
@@ -112,8 +131,12 @@ finishGame.addEventListener('click', () => {
               points = 0;
               localStorage.setItem('points', 0);
               quizBox.classList.remove('show');
-              gameButtons.classList.remove('show');
+              quizBox.classList.remove('animate__backInDown');
+              quizBox.classList.add('animate__backOutUp');
+              startGame.classList.remove('animate__backOutUp');
               startGame.classList.add('show');
+              startGame.classList.add('animate__backInDown');
+              gameButtons.classList.remove('show');
             }
           });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -135,6 +158,12 @@ endOfTheGame.addEventListener('click', () => {
     customClass: {
       confirmButton: 'button game-button next-btn',
     },
+    showClass: {
+      popup: 'animate__animated animate__backInDown',
+    },
+    hideClass: {
+      popup: 'animate__animated animate__backOutUp',
+    },
     buttonsStyling: false,
   });
 
@@ -154,9 +183,13 @@ endOfTheGame.addEventListener('click', () => {
         points = 0;
         localStorage.setItem('points', 0);
         quizBox.classList.remove('show');
+        quizBox.classList.remove('animate__backInDown');
+        quizBox.classList.add('animate__backOutUp');
+        startGame.classList.remove('animate__backOutUp');
+        startGame.classList.add('show');
+        startGame.classList.add('animate__backInDown');
         finishGame.classList.contains('hide') && finishGame.classList.remove('hide');
         finishGameButton.classList.remove('show');
-        startGame.classList.add('show');
       }
     });
 });
