@@ -18,4 +18,8 @@ In this challenge we are going to model a question and answer contest, the inten
 
 ## Application Demo:
 
-![preview web app.](https://github.com/JuanWebDeveloper/Questions-And-Answers/blob/master/img/demo.gif)
+![preview web app.](./img/demo.gif)
+
+## Link To The Video Where The Application Code Is Explained
+
+https://github.com/JuanWebDeveloper/Questions-And-Answers/tree/master/img/codeExplanation.webm
